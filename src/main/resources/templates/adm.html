@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Admin - Hotel e Quarto</title>
+</head>
+
+<body>
+
+<h1>Gerenciamento de Hotel e Quarto</h1>
+
+<div>
+    <h2>Criar Hotel</h2>
+    <form th:action="@{/hotels}" method="post">
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id" required/>
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required/>
+
+        <label for="avaliacao">Avaliação:</label>
+        <input type="number" id="avaliacao" name="avaliacao" step="0.1" required/>
+
+        <label for="rooms">Quartos:</label>
+        <textarea id="rooms" name="rooms"></textarea>
+
+        <input type="submit" value="Criar Hotel"/>
+    </form>
+
+    <h2>Criar Quarto</h2>
+    <form th:action="@{/rooms}" method="post">
+        <label for="hotelId">ID Hotel:</label>
+        <input type="number" id="hotelId" name="hotelId" required/>
+
+        <label for="totalDoubleBeds">Total Camas Duplas:</label>
+        <input type="number" id="totalDoubleBeds" name="totalDoubleBeds" required/>
+
+        <label for="totalSingleBeds">Total Camas Individuais:</label>
+        <input type="number" id="totalSingleBeds" name="totalSingleBeds" required/>
+
+        <label for="dailyRate">Diária:</label>
+        <input type="number" id="dailyRate" name="dailyRate" step="0.01" required/>
+
+        <input type="submit" value="Criar Quarto"/>
+    </form>
+</div>
+
+</body>
+
+</html>

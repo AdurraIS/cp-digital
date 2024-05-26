@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <title> Olá mundo da segurança!</title>
+</head>
+<body>
+
+<h1 th:inline="text"> Olá <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+
+<div th:if="${rooms != null}">
+    <h2> Quartos:</h2>
+    <ul>
+        <li th:each="room : ${rooms}">
+            <span th:text="${room.roomNumber}">Room #</span> -
+            <span th:text="${room.type}">Type: </span>
+            <br/>
+            <span>Double Beds: </span>
+            <span th:text="${room.totalDoubleBeds}">N/A</span>
+            <br/>
+            <span>Single Beds: </span>
+            <span th:text="${room.totalSingleBeds}">N/A</span>
+            <br/>
+            <span>Daily Rate: </span>
+            <span th:text="${room.dailyRate}">N/A</span>
+            <br/>
+        </li>
+    </ul>
+</div>
+
+<div th:unless="${rooms != null}">
+    <p>Não há quartos disponíveis.</p>
+</div>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sair"/>
+</form>
+
+</body>
+</html>
